@@ -7,7 +7,12 @@ var PlayerView = Backbone.View.extend({
 
   initialize: function() {
     this.on('dequeue', function() {
-      
+      this.remove(this.at(0));
+      this.playFirst();
+    });
+    this.on('ended', function() {
+      console.log('ended');
+      this.dequeue();
     });
   },
 
