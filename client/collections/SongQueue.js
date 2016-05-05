@@ -11,19 +11,22 @@ var SongQueue = Backbone.Collection.extend({
       if (this.length === 1) {
         this.playFirst();
       }
-    });
+    }, this);
+
     this.on('ended', function() {
       this.shift();
       if (this.length) {
         this.playFirst();
       }
-    });
+    }, this);
+
     this.on('dequeue', function() {
       this.remove(this.at(0));
-    });
+    }, this);
+
     // this.on('enqueue', function(song) {
-    //   this.push(song);
-    // });
+    //   this.add(song);
+    // }, this);
   }
 
 });
