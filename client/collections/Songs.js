@@ -2,16 +2,15 @@
 var Songs = Backbone.Collection.extend({
 
   server: 'https://api.parse.com/1/classes/songs',
-  storage: [],
 
   model: SongModel,
-  initialize: function(songs) {
-    this.storage.push($.ajax({
+  initialize: function(song) {
+    $.ajax({
       url: this.server,
       method: 'GET',
       'Content-Type': 'application/json',
-      data: JSON.stringify(songs)
-    }));
+      data: JSON.stringify(song)
+    });
   }
 
 });
