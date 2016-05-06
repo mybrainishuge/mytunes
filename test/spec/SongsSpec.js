@@ -6,7 +6,6 @@ describe('Songs', function() {
       requests = [];
       xhr = sinon.useFakeXMLHttpRequest();
       xhr.onCreate = function(request) {
-        console.log('called');
         requests.push(request);
       };
 
@@ -36,7 +35,7 @@ describe('Songs', function() {
       expect(requests[0].url).to.include('https://api.parse.com/1/classes/songs');
     });
 
-    xit('should populate itself with the data returned from the Parse server', function() {
+    it('should populate itself with the data returned from the Parse server', function() {
       songs = new Songs();
       requests[0].respond(200, { 'Content-Type': 'application/json' }, fakeResponse);
       expect(songs).to.have.length(2);
